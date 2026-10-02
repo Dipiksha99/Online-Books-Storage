@@ -1,72 +1,51 @@
-books_storage
-│
-├── backend
-│   ├── models
-│   │   ├── User.js
-│   │   ├── Book.js
-│   │   └── Order.js
-│   │
-│   ├── routes
-│   │   ├── authRoutes.js
-│   │   ├── bookRoutes.js
-│   │   └── orderRoutes.js  bookRoutes.js
-│   │
-│   ├── middleware
-│   │   └── authMiddleware.js
-│   │
-│   ├── server.js
-│   ├── .env
-│   ├── package.json
-│   └── package-lock.json
-│
-├── frontend
-│   ├── css
-│   │   ├── style.css
-│   │   ├── books.css
-│   │   ├── book-details.css
-│   │   ├── auth.css
-│   │   ├── cart.css
-│   │   ├── checkout.css
-│   │   └── orders.css
-│   │
-│   ├── images
-│   │   ├── logo.png
-│   │   ├── book1.jpg
-│   │   ├── book2.jpg
-│   │   └── ...
-│   │
-│   ├── javascript
-│   │   ├── script.js
-│   │   ├── books.js
-│   │   ├── book-details.js
-│   │   ├── login.js
-│   │   ├── register.js
-│   │   ├── cart.js
-│   │   ├── checkout.js
-│   │   └── orders.js
-│   │
-│   ├── index.html
-│   ├── books.html
-│   ├── book-details.html
-│   ├── login.html
-│   ├── register.html
-│   ├── cart.html
-│   ├── checkout.html
-│   └── orders.html
-│
-├── admin
-│   ├── css
-│   │   └── admin.css
-│   │
-│   ├── javascript
-│   │   ├── admin-login.js
-│   │   ├── dashboard.js
-│   │   ├── admin-books.js
-│   │   └── admin-orders.js
-│   │
-│   ├── login.html
-│   ├── dashboard.html
-│   ├── books.html
-│   └── orders.html
-│
-└── .gitignore
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Book Store</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+       <div class="navdiv">
+           <img id="logo" src="images/logo2.png" alt="Book Store Logo" />
+         
+
+        <ul>
+          <li class="hover-text"><a href="index.html">Home</a></li>
+          <li class="hover-text"><a href="books.html">Books</a></li>
+          <li class="hover-text"><a href="login.html">Login</a></li>
+          <li class="hover-text"><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+      </nav>
+
+      <h1>Welcome to the Wonderful World of Books</h1>
+    </header>
+    <main>
+      <img id="main-image" src="images/background.jpg" alt="Books" width="100%" />
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Discover Your Next Favorite Book</h2>
+          <p>Explore our vast collection of books across various genres and authors.</p>
+          <a href="books.html" class="btn">Browse Books</a>
+        </div>
+      </section>
+
+      <section class="featured-books">
+        <h2>Featured Books</h2>
+        <div class="book-list">
+          <!-- Featured books will be displayed here -->
+        </div>
+      </section>
+
+      <section class="about">
+        <h2>About Us</h2>
+        <p>We are passionate about books and aim to provide a seamless online shopping experience for book lovers.</p>
+      </section>
+    </main>
+  </body>
+</html>

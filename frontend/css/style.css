@@ -1,0 +1,34 @@
+*{
+    text-decoration: none;
+}
+.navbar{
+    background: #3b194f;
+    font-family: calibri;
+    padding: 15px;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#logo{
+    width: 55px; 
+    height: 55px; 
+    color: white;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+    transition: 0.2s;
+}
+.hover-text a:hover,
+.hover-text a.active {
+    color: #f679bc;
+}
+
