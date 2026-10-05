@@ -11,9 +11,12 @@ mongoose.connect( process.env.MONGO_URL).then(() => {
 
 
 const exp = require("express");
+const cors = require("cors");
 const bookRoutes = require("./routes/bookRoutes");
 
 const app = exp();
+app.use(cors());
+
 app.use(exp.json());
 app.use("/api/books", bookRoutes);
 app.get("/",  (req, res) => {
