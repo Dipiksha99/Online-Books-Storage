@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Section</title>
-    <link rel="stylesheet" href="css/books.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="css/books.css" />
+    <script
+      src="https://kit.fontawesome.com/1a9471f516.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <header>
       <nav class="navbar">
         <div class="navdiv">
@@ -22,10 +26,28 @@
       </nav>
     </header>
     <main>
-        <section class="booksection">
-            <h1 id="pagetitle">Book Section</h1>
-            <div class="container">
-                <!-- <div class="book">
+      <section class="booksection">
+        <h1 id="pagetitle">Book Section</h1>
+
+        <div class="search">
+          <input type="text" placeholder="search book..." id="searchbook" />
+          <button id="find">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="category">
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Self Help">Self Help</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Programming">Programming</option>
+            <option value="Business">Business</option>
+          </select>
+        </div>
+
+        <div class="container">
+          <!-- <div class="book">
                     <img>
                     <p id="title">Title:</p>
                     <p id="author">Author:</p>
@@ -33,12 +55,10 @@
                     <p id="category">Category:</p>
                     <button class="btn">View Details</button>
                 </div> -->
-
-            </div>
-
-        </section>
+        </div>
+      </section>
     </main>
-    
+
     <script src="javascript/books.js"></script>
-</body>
+  </body>
 </html>

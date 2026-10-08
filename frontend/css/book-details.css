@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  background: #030303;
+}
+
+/*---- Navigation Bar ----*/
+.navbar {
+  background: #3b194f;
+  font-family: calibri;
+  padding: 15px;
+}
+.navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#logo {
+  width: 55px;
+  height: 55px;
+  color: white;
+}
+li {
+  list-style: none;
+  display: inline-block;
+}
+li a {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  transition: 0.2s;
+}
+.hover-text a:hover,
+.hover-text a.active {
+  color: #f679bc;
+}
+
+/* ------ Responsive Navbar ------ */
+
+@media (max-width: 700px) {
+  .book-details {
+    width: 95%;
+    margin: 25px auto;
+    padding: 20px;
+  }
+
+  .book-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .book-image {
+    width: 100%;
+  }
+
+  .book-image img {
+    max-width: 300px;
+  }
+
+  .book-info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .book-info h2 {
+    font-size: 28px;
+  }
+
+  .book-info p {
+    font-size: 16px;
+  }
+  .navdiv ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+/* ----- main ----- */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.book-details {
+  width: 90%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 40px;
+  border: 1px solid #6d3a91;
+  border-radius: 15px;
+  background: #0b0b0f;
+}
+
+.book-details h1 {
+  text-align: center;
+  color: #eec1fc;
+  margin-bottom: 30px;
+}
+
+.book-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+}
+
+.book-image {
+  width: 45%;
+  text-align: center;
+}
+
+.book-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.book-info {
+  width: 45%;
+}
+
+.book-info h2 {
+  color: #f679bc;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.book-info p {
+  color: #e6e6e6;
+  font-size: 18px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
