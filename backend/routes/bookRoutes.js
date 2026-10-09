@@ -4,7 +4,9 @@ const router = exp.Router();
 
 const Book = require("../models/Book");
 
-router.post("/", async (req, res) => {
+const authMiddleware = require("../middleware/authMiddleware");
+
+router.post("/", authMiddleware, async (req, res) => {
 
     try {
 
@@ -27,7 +29,7 @@ router.post("/", async (req, res) => {
 });
 
 
-router.put("/:_id", async (req, res) => {
+router.put("/:_id", authMiddleware, async (req, res) => {
 
     try {
 
@@ -52,7 +54,7 @@ router.put("/:_id", async (req, res) => {
 });
 
 
-router.get("/", async (req, res) => {
+router.get("/", authMiddleware, async (req, res) => {
 
     try {
 
@@ -73,7 +75,7 @@ router.get("/", async (req, res) => {
 });
 
 
-router.get("/:_id", async (req, res) => {
+router.get("/:_id", authMiddleware, async (req, res) => {
 
     try {
 
@@ -98,7 +100,7 @@ router.get("/:_id", async (req, res) => {
 });
 
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/:_id", authMiddleware, async (req, res) => {
 
     try {
 

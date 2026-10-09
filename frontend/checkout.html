@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Online Book Store</title>
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navdiv">
+        <img id="logo" src="images/logo2.png" alt="Book Store Logo">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout">
+      <h1>Checkout</h1>
+      <div id="orderSummary"></div>
+
+      <form id="checkoutForm">
+        <label for="customerName">Full Name</label>
+        <input id="customerName" type="text" required>
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel" pattern="[0-9]{10}"
+          maxlength="10" required>
+
+        <label for="address">Delivery Address</label>
+        <textarea id="address" rows="4" required></textarea>
+
+        <h2>Total: ₹<span id="checkoutTotal">0</span></h2>
+
+        <button type="submit">Place Order</button>
+        <p id="message"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="javascript/checkout.js"></script>
+</body>
+</html>

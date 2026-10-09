@@ -142,3 +142,23 @@ main {
   margin-bottom: 15px;
   line-height: 1.6;
 }
+
+
+.book-info button.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #6d3a91, #f679bc);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 12px 10px 0 0;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.book-info button.btn:hover {
+  background: linear-gradient(135deg, #f679bc, #6d3a91);
+  transform: translateY(-2px);
+}

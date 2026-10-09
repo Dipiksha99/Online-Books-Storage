@@ -1,6 +1,6 @@
-
 const dotenv = require("dotenv");
 dotenv.config();
+
 const mongoose = require("mongoose");
 
 mongoose.connect( process.env.MONGO_URL).then(() => {
@@ -12,6 +12,8 @@ mongoose.connect( process.env.MONGO_URL).then(() => {
 
 const exp = require("express");
 const cors = require("cors");
+
+// ===== book router =====//
 const bookRoutes = require("./routes/bookRoutes");
 
 const app = exp();
@@ -26,6 +28,13 @@ app.get("/",  (req, res) => {
 res.send("Online Book Store API is running");
 //   res.json(books);
 });
+
+
+//  ===== user ke liye ===== //
+const authRoutes = require ("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });

@@ -1,0 +1,155 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #030303;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: #3b194f;
+  padding: 15px;
+}
+
+.navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+#logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.navdiv ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  list-style: none;
+}
+
+.navdiv a {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.navdiv a:hover,
+.navdiv a.active {
+  color: #f679bc;
+}
+
+.orders-section {
+  width: 92%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #0b0b0f;
+  border: 1px solid #6d3a91;
+  border-radius: 14px;
+}
+
+.orders-section h1 {
+  text-align: center;
+  color: #eec1fc;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+#ordersMessage {
+  text-align: center;
+  color: #eec1fc;
+  padding: 20px;
+}
+
+.order-card {
+  padding: 22px;
+  margin-bottom: 20px;
+  background: #17121d;
+  border: 1px solid #6d3a91;
+  border-radius: 10px;
+}
+
+.order-card h2 {
+  color: #f679bc;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.order-card p {
+  margin: 10px 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.order-status {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #3b194f;
+  color: #eec1fc;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.order-items {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #493252;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .navdiv {
+    align-items: flex-start;
+  }
+
+  #logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navdiv ul {
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .navdiv a {
+    font-size: 14px;
+  }
+
+  .orders-section {
+    width: 95%;
+    padding: 16px;
+    margin: 25px auto;
+  }
+
+  .orders-section h1 {
+    font-size: 28px;
+  }
+
+  .order-card {
+    padding: 15px;
+  }
+}

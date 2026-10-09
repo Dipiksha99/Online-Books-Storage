@@ -5,86 +5,116 @@ container.textContent = "Loading books...";
 
 let allBooks = [];
 
-fetch("http://localhost:5000/api/books")
-  .then((response) => response.json())
-  .then((books) => {
-    allBooks = books;
+const token = sessionStorage.getItem("token");
 
-    const input = document.querySelector("#searchbook");
-    const searchbtn = document.getElementById("find");
+if (!token) {
+  container.textContent = "Please login first.";
+} else {
+  fetch("http://localhost:5000/api/books", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(async (response) => {
+      const result = await response.text();
+      console.log("Books API status:", response.status);
+      console.log("Books API response:", result);
 
-    const catFilter = document.getElementById("categoryFilter");
+      if (!response.ok) {
+        throw new Error(result);
+      }
 
-    function filterBooks() {
-      const searchText = input.value;
-      const category = catFilter.value;
+      return JSON.parse(result);
+    })
+    .then((books) => {
+      allBooks = books;
 
-      const result = allBooks.filter(function (book) {
-        return (
-          book.title.toLowerCase().includes(searchText.toLowerCase()) &&
-          (category === "all" || book.category === category)
-        );
-      });
+      const input = document.querySelector("#searchbook");
+      const searchbtn = document.getElementById("find");
+      const catFilter = document.getElementById("categoryFilter");
 
-      console.log(result);
-      displayBooks(result);
-    }
+      function filterBooks() {
+        const searchText = input.value.trim().toLowerCase();
+        const category = catFilter.value;
 
-    catFilter.addEventListener("change", function () {
-      filterBooks();
-    });
-
-    searchbtn.addEventListener("click", function () {
-      filterBooks();
-    });
-
-    function displayBooks(books) {
-      container.textContent = "";
-
-      books.forEach(function (book) {
-        const card = document.createElement("div");
-        card.className = "book";
-
-        const image = document.createElement("img");
-        image.src = "images/" + book.image;
-        image.alt = book.title;
-        card.appendChild(image);
-
-        const title = document.createElement("p");
-        title.textContent = book.title;
-        card.appendChild(title);
-
-        const author = document.createElement("p");
-        author.textContent = book.author;
-        card.appendChild(author);
-
-        const price = document.createElement("p");
-        price.textContent = book.price;
-        card.appendChild(price);
-
-        const category = document.createElement("p");
-        category.textContent = book.category;
-        card.appendChild(category);
-
-        const button = document.createElement("button");
-        button.className = "btn";
-        button.textContent = "View Details";
-
-        // View Details button
-        button.addEventListener("click", function () {
-          window.location.href = "book-details.html?id=" + book._id;
+        const result = allBooks.filter(function (book) {
+          return (
+            (book.title || "").toLowerCase().includes(searchText) &&
+            (category === "all" || book.category === category)
+          );
         });
 
-        card.appendChild(button);
+        console.log(result);
+        displayBooks(result);
+      }
 
-        container.appendChild(card);
+      catFilter.addEventListener("change", function () {
+        filterBooks();
       });
-    }
 
-    displayBooks(allBooks);
-  })
+      searchbtn.addEventListener("click", function () {
+        filterBooks();
+      });
 
-  .catch((error) => {
-    console.log(error);
-    container.textContent = "Unable to load books.";
-  });
+      input.addEventListener("input", function () {
+        filterBooks();
+      });
+
+      function displayBooks(books) {
+        container.textContent = "";
+
+        if (books.length === 0) {
+          container.textContent = "No books found.";
+          return;
+        }
+
+        books.forEach(function (book) {
+          const card = document.createElement("div");
+          card.className = "book";
+
+          const image = document.createElement("img");
+          image.src = "images/" + (book.image || "");
+          image.alt = book.title || "Book cover";
+          card.appendChild(image);
+
+          const title = document.createElement("p");
+          title.textContent = book.title || "Untitled";
+          card.appendChild(title);
+
+          const author = document.createElement("p");
+          author.textContent = "Author: " + (book.author || "Unknown");
+          card.appendChild(author);
+
+          const price = document.createElement("p");
+          price.textContent = "Price: ₹" + (book.price ?? "N/A");
+          card.appendChild(price);
+
+          const category = document.createElement("p");
+          category.textContent = "Category: " + (book.category || "Other");
+          card.appendChild(category);
+
+          const button = document.createElement("button");
+          button.className = "btn";
+          button.textContent = "View Details";
+
+          button.addEventListener("click", function () {
+            window.location.href =
+              "book-details.html?id=" + encodeURIComponent(book._id);
+          });
+
+          card.appendChild(button);
+          container.appendChild(card);
+        });
+      }
+
+      displayBooks(allBooks);
+      console.log("Rendered book cards:", container.querySelectorAll(".book").length);
+      console.log("Books received:", allBooks.length);
+      console.log("Books container:", container);
+    })
+    .catch((error) => {
+      console.error("Books loading error:", error);
+      container.textContent = "Unable to load books. Please try again.";
+    });
+}

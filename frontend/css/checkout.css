@@ -1,0 +1,88 @@
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #030303;
+  color: white;
+}
+
+.navbar {
+  background: #3b194f;
+  padding: 15px;
+}
+
+.navdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+#logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.navdiv ul {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.navdiv a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.checkout {
+  max-width: 650px;
+  width: 92%;
+  margin: 35px auto;
+  padding: 25px;
+  border: 1px solid #6d3a91;
+  border-radius: 12px;
+  background: #0b0b0f;
+}
+
+.checkout h1 {
+  text-align: center;
+  color: #eec1fc;
+}
+
+.checkout label {
+  display: block;
+  margin-top: 18px;
+}
+
+.checkout input,
+.checkout textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 7px;
+  border: 1px solid #6d3a91;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.checkout h2 {
+  margin-top: 25px;
+  color: #f679bc;
+}
+
+.checkout button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #6d3a91, #f679bc);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

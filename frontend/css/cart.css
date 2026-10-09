@@ -1,0 +1,174 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #030303;
+  color: white;
+}
+
+.navbar {
+  background: #3b194f;
+  padding: 15px;
+}
+
+.navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+#logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.navdiv ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.navdiv a {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navdiv a:hover {
+  color: #f679bc;
+}
+
+.cart-section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #0b0b0f;
+  border: 1px solid #6d3a91;
+  border-radius: 12px;
+}
+
+.cart-section h1 {
+  text-align: center;
+  color: #eec1fc;
+  margin-bottom: 25px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 18px;
+  margin-bottom: 15px;
+  background: #19151e;
+  border: 1px solid #6d3a91;
+  border-radius: 10px;
+}
+
+.cart-item h3 {
+  color: #f679bc;
+  margin-bottom: 8px;
+}
+
+.cart-item p {
+  margin: 5px 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.quantity-controls button {
+  background: #6d3a91;
+  color: white;
+}
+
+.remove-btn {
+  background: #b52b43;
+  color: white;
+}
+
+.cart-summary {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.cart-summary h2 {
+  margin-bottom: 20px;
+  color: #eec1fc;
+}
+
+#clearCart {
+  background: #555;
+  color: white;
+  margin-right: 8px;
+}
+
+#checkoutBtn {
+  background: #7d35a6;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .navdiv {
+    align-items: flex-start;
+  }
+
+  #logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navdiv ul {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .navdiv a {
+    font-size: 14px;
+  }
+
+  .cart-section {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .cart-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cart-summary {
+    text-align: left;
+  }
+}
+

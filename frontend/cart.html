@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Online Book Store</title>
+
+    <link rel="stylesheet" href="css/cart.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navdiv">
+          <img id="logo" src="images/logo2.png" alt="Book Store Logo" />
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="cart-section">
+        <h1>My Shopping Cart</h1>
+        <div id="cartItems">Your cart is empty.</div>
+        <div class="cart-summary">
+          <h2>Total: ₹<span id="cartTotal">0</span></h2>
+          <button id="clearCart" type="button">Clear Cart</button>
+          <button id="checkoutBtn" type="button">Proceed to Checkout</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="javascript/cart.js"></script>
+  </body>
+</html>

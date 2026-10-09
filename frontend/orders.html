@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - Online Book Store</title>
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navdiv">
+        <img id="logo" src="images/logo2.png" alt="Book Store Logo">
+
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html" class="active">My Orders</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="orders-section">
+      <h1>My Orders</h1>
+      <p class="subtitle">View your order history and order status.</p>
+
+      <div id="ordersMessage">Loading your orders...</div>
+      <div id="ordersContainer"></div>
+    </section>
+  </main>
+
+  <script src="javascript/orders.js"></script>
+</body>
+</html>
