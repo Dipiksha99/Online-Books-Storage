@@ -12,44 +12,85 @@ body {
   min-height: 100vh;
 }
 
+/*---- Navigation Bar ----*/
 .navbar {
   background: #3b194f;
+  font-family: calibri;
   padding: 15px;
 }
-
 .navdiv {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
 }
-
 #logo {
   width: 55px;
   height: 55px;
-  object-fit: contain;
-}
-
-.navdiv ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  list-style: none;
-}
-
-.navdiv a {
   color: white;
-  font-size: 18px;
+}
+li {
+  list-style: none;
+  display: inline-block;
+}
+li a {
+  color: white;
+  font-size: 20px;
   font-weight: bold;
-  text-decoration: none;
+  margin-right: 30px;
   transition: 0.2s;
 }
-
-.navdiv a:hover,
-.navdiv a.active {
+.hover-text a:hover,
+.hover-text a.active {
   color: #f679bc;
 }
+
+/* ------ Responsive Navbar ------ */
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .navdiv {
+    align-items: center;
+  }
+
+  #logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .navdiv ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 14px;
+  }
+
+  li {
+    display: block;
+  }
+
+  li a {
+    font-size: 16px;
+    margin-right: 0;
+  }
+  .container {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .book {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+
+  .book img {
+    max-width: 100%;
+  }
+}
+
+/* --- order section ---- */
 
 .orders-section {
   width: 92%;

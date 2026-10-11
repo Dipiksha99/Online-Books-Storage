@@ -15,12 +15,14 @@ const cors = require("cors");
 
 // ===== book router =====//
 const bookRoutes = require("./routes/bookRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = exp();
 app.use(cors());
 
 app.use(exp.json());
 app.use("/api/books", bookRoutes);
+app.use("/api/orders", orderRoutes);
 app.get("/",  (req, res) => {
   // Get books
 //   const books = await books.find();
