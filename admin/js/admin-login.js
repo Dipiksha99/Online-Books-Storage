@@ -2,43 +2,72 @@ const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
 loginForm.addEventListener("submit", async function (event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
+    // Get input values
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-  if (!email || !password) {
-    message.textContent = "Please enter email and password.";
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-
-    const result = await response.text();
-
-    if (!response.ok) {
-      message.textContent = result;
-      return;
+    // Validate inputs
+    if (!email || !password) {
+        message.textContent = "Please enter email and password.";
+        message.style.color = "red";
+        return;
     }
 
-    const data = JSON.parse(result);
+    // Show loading message
+    message.textContent = "Logging in...";
+    message.style.color = "#3b194f";
 
-    sessionStorage.setItem("token", data.token);
-    message.textContent = data.message;
+    try {
+        // Send login request to backend
+        const response = await fetch(
+            "http://localhost:5000/api/auth/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
 
-    window.location.href = "dashboard.html";
-  } catch (error) {
-    message.textContent = "Server se connect nahi ho pa raha!";
-    console.log(error);
-  }
+        // Read JSON response
+        const data = await response.json();
+
+        // Handle login errors
+        if (!response.ok) {
+            message.textContent =
+                data.message || "Invalid email or password.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Check token
+        if (!data.token) {
+            message.textContent = "Login token not received.";
+            message.style.color = "red";
+            return;
+        }
+
+        // Save token
+        sessionStorage.setItem("token", data.token);
+
+        // Show success message
+        message.textContent = data.message || "Login successful!";
+        message.style.color = "green";
+
+        // Redirect to dashboard
+        window.location.href = "dashboard.html";
+
+    } catch (error) {
+        console.error("Login error:", error);
+
+        message.textContent =
+            "Server se connect nahi ho pa raha!";
+        message.style.color = "red";
+    }
 });

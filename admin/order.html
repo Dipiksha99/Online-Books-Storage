@@ -1,28 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Order</title>
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-    <header>
-      <nav class="navbar">
-        <div class="navdiv">
-          <img id="logo" src="/frontend/images/logo2.png" alt="Book Store Logo" />
+    <link rel="stylesheet" href="css/order.css" />
+  </head>
 
-          <ul>
-            <li class="hover-text"><a href="index.html">Home</a></li>
-            <li class="hover-text"><a href="books.html">Books</a></li>
-            <li class="hover-text"><a href="login.html">Login</a></li>
-            <li class="hover-text"><a href="cart.html">Cart</a></li>
-            <li class="hover-text"><a href="orders.html">My Orders</a></li>
-          </ul>
-        </div>
+  <body>
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+      <a href="../frontend/index.html" class="brand">
+        <img src="../frontend/images/logo2.png" alt="BookStore Logo" />
+        <span>BookStore Admin Panel</span>
+      </a>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="book.html">Books</a>
+        <a href="order.html" class="top-active">Orders</a>
+        <a href="login.html">Login</a>
       </nav>
     </header>
 
+    <!-- MAIN LAYOUT -->
+    <main>
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          <span class="icon">📚</span>
+          <span class="text">BookStore Admin</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="dashboard.html" class="nav-link">
+            🏠 <span>Dashboard</span>
+          </a>
+
+          <a href="book.html" class="nav-link">
+            📖 <span>Books</span>
+          </a>
+
+          <a href="order.html" class="nav-link active">
+            🛒 <span>Orders</span>
+          </a>
+
+          <a href="login.html" class="nav-link" id="logoutBtn">
+            🚪 <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- PAGE CONTENT -->
+      <div class="main-content">
+        <div class="page-header">
+          <div>
+            <h1>Orders Management</h1>
+            <p>View customer orders and update their status.</p>
+          </div>
+        </div>
+
+        <!-- ORDERS LIST + STATUS SECTION -->
+        <div class="orders-layout">
+
+          <!-- LEFT SIDE: ORDERS LIST -->
+          <section class="orders-section">
+            <div class="orders-header">
+              <h2>Orders List</h2>
+
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Search by Order ID or Customer..."
+                aria-label="Search orders"
+              />
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody id="ordersTableBody">
+                  <!-- Orders will be loaded using JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- RIGHT SIDE: UPDATE ORDER STATUS -->
+          <section class="status-update">
+            <div class="status-card">
+              <h2>Update Order Status</h2>
+
+              <p>
+                Order ID:
+                <strong id="selectedOrderId">
+                  Select an order from the table
+                </strong>
+              </p>
+
+              <p>
+                Current Status:
+                <span class="status-badge" id="currentStatus">
+                  Not selected
+                </span>
+              </p>
+
+              <label for="orderStatus">Change Status:</label>
+
+              <select id="orderStatus" name="status" disabled>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+
+              <button type="button" id="updateStatusBtn" disabled>
+                Update Status
+              </button>
+
+              <p id="statusMessage" role="status" aria-live="polite"></p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="admin-footer">
+      <p>© 2026 BookStore Admin Panel</p>
+      <p>Manage your store. Inspire more readers.</p>
+    </footer>
+
     <script src="js/admin-orders.js"></script>
-</body>
+  </body>
 </html>

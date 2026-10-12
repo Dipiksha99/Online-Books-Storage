@@ -1,29 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-    <header>
-      <nav class="navbar">
-        <div class="navdiv">
-          <img id="logo" src="/frontend/images/logo2.png" alt="Book Store Logo" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../frontend/index.html" class="brand">
+        <img src="../frontend/images/logo2.png" alt="BookStore Logo" />
+        <span>BookStore Admin Panel</span>
+      </a>
 
-          <ul>
-            <li class="hover-text"><a href="index.html">Home</a></li>
-            <li class="hover-text"><a href="books.html">Books</a></li>
-            <li class="hover-text"><a href="login.html">Login</a></li>
-            <li class="hover-text"><a href="cart.html">Cart</a></li>
-            <li class="hover-text"><a href="orders.html">My Orders</a></li>
-          </ul>
-        </div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="book.html">Books</a>
+        <a href="order.html">Orders</a>
+        <a href="login.html">Login</a>
       </nav>
     </header>
 
+    <main>
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="logo">
+          <span class="icon">📚</span>
+          <span class="text">BookStore Admin</span>
+        </div>
+
+        <div class="nav-menu">
+          <a
+            href="dashboard.html"
+            class="nav-link active"
+            data-page="dashboard"
+          >
+            🏠 <span>Dashboard</span>
+          </a>
+          <a href="book.html" class="nav-link" data-page="books">
+            📖 <span>Books</span>
+          </a>
+          <a href="order.html" class="nav-link" data-page="orders">
+            🛒 <span>Orders</span>
+          </a>
+          <a href="login.html" class="nav-link" id="logoutBtn">
+            🚪 <span>Logout</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="main">
+        <div class="header">
+          <h1 id="pageTitle">Dashboard</h1>
+          <div class="admin-profile">👤 Admin ▾</div>
+        </div>
+
+        <!-- STATS CARDS -->
+        <div class="stats-cards" id="statsSection">
+          <div class="card purple">
+            <div class="card-info">
+              <h3>Total Books</h3>
+              <div class="number" id="totalBooks">12</div>
+            </div>
+            <div class="card-icon">📚</div>
+          </div>
+
+          <div class="card green">
+            <div class="card-info">
+              <h3>Total Orders</h3>
+              <div class="number" id="totalOrders">8</div>
+            </div>
+            <div class="card-icon">🛒</div>
+          </div>
+
+          <div class="card blue">
+            <div class="card-info">
+              <h3>Total Users</h3>
+              <div class="number" id="totalUsers">5</div>
+            </div>
+            <div class="card-icon">👥</div>
+          </div>
+        </div>
+
+        <!-- RECENT ORDERS TABLE -->
+        <div class="orders-section" id="ordersSection">
+          <div class="orders-header">
+            <h2>Recent Orders</h2>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by Order ID or Name..."
+            />
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>User</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- JS se data aayega -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="admin-footer">
+      <p>© 2026 BookStore Admin Panel</p>
+      <p>Manage your store. Inspire more readers.</p>
+      <button class="del">Delete</button>
+    </footer>
 
     <script src="js/dashboard.js"></script>
-</body>
+  </body>
 </html>

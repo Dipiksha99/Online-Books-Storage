@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Order</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="navbar">
+      <a href="../frontend/index.html" class="brand">
+        <img src="../frontend/images/logo2.png" alt="BookStore Logo" />
+        <span>BookStore Admin Panel</span>
+      </a>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="book.html">Books</a>
+        <a href="order.html">Orders</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="logo">
+          <span class="icon">📚</span>
+          <span class="text">BookStore Admin</span>
+        </div>
+
+        <div class="nav-menu">
+          <a
+            href="dashboard.html"
+            class="nav-link"
+            data-page="dashboard"
+          >
+            🏠 <span>Dashboard</span>
+          </a>
+
+          <a href="book.html" class="nav-link " data-page="books">
+            📖 <span>Books</span>
+          </a>
+
+          <a href="order.html" class="nav-link " data-page="orders">
+            🛒 <span>Orders</span>
+          </a>
+          <a href="login.html" class="nav-link active" id="logoutBtn">
+            🚪 <span>Logout</span>
+          </a>
+        </div>
+      </div>
+
+    <script src="js/admin-orders.js"></script>
+</body>
+</html>

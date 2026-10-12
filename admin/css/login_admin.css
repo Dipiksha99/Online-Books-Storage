@@ -1,0 +1,360 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #030303;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Navigation Bar ---- */
+.navbar {
+  background: #3b194f;
+  font-family: Calibri, sans-serif;
+  color: white;
+  min-height: 78px;
+  padding: 14px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.brand img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 10px 4px;
+  transition: color 0.2s ease;
+}
+
+.navbar nav a:hover {
+  color: #f679bc;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  transition: color 0.2s ease;
+}
+
+.navbar nav a:hover {
+  color: #f679bc;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+
+li a {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  transition: 0.2s;
+}
+
+.hover-text a:hover,
+.hover-text a.active {
+  color: #f679bc;
+}
+
+/* ---- Login Page Layout ---- */
+.login-layout {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+  flex: 1;
+}
+
+/* ---- Left Welcome Section ---- */
+.welcome {
+  text-align: center;
+}
+
+.book-illustration {
+  position: relative;
+  max-width: 340px;
+  height: 230px;
+  margin: 0 auto 25px;
+  background: -webkit-linear-gradient(
+    90deg,
+    #ffffff,
+    #d0e3ff,
+    #eaeaee,
+    #faf2e5
+  );
+  background: linear-gradient(90deg, #ffffff, #d0e3ff, #eaeaee, #faf2e5);
+  border: 2px solid #f679bc;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.books {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transform: rotate(-5deg);
+}
+
+.book {
+  height: 42px;
+  border-radius: 5px 12px 12px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 7px #35205d30;
+}
+
+.book-one {
+  background: #6335a0;
+  width: 85%;
+}
+
+.book-two {
+  background: #f679bc;
+  color: #030303;
+  width: 100%;
+}
+
+.book-three {
+  background: #3b194f;
+  width: 90%;
+}
+
+.plant {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  font-size: 40px;
+}
+
+.shield {
+  position: absolute;
+  bottom: 20px;
+  right: 22px;
+  background: white;
+  padding: 12px;
+  border: 2px solid #f679bc;
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.welcome h1 {
+  color: #f679bc;
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.welcome > p {
+  color: #d8c2ff;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.welcome-points {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  color: #eee5ff;
+  font-size: 14px;
+}
+
+/* ---- Right Login Card ---- */
+.login-card {
+  background: -webkit-linear-gradient(
+    90deg,
+    #ffffff,
+    #d0e3ff,
+    #eaeaee,
+    #faf2e5
+  );
+  background: linear-gradient(90deg, #ffffff, #d0e3ff, #eaeaee, #faf2e5);
+  color: #030303;
+  padding: 38px;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px #f679bc25;
+  border: 2px solid #6335a0;
+}
+
+.login-icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.login-card h2 {
+  font-size: 29px;
+  color: #3b194f;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #5f5368;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.login-card label {
+  display: block;
+  color: #3b194f;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 20px 0 9px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #c9b5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  color: #030303;
+}
+
+.login-card input:focus {
+  border-color: #f679bc;
+  box-shadow: 0 0 0 3px #f679bc35;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 8px;
+  background: #6335a0;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-card button:hover {
+  background: #3b194f;
+}
+
+#message {
+  margin-top: 12px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  color: #3b194f;
+}
+
+.secure-note {
+  text-align: center;
+  color: #5f5368;
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+/* ---- Footer ---- */
+footer {
+  background: #3b194f;
+  color: white;
+  text-align: center;
+  padding: 18px;
+  line-height: 1.8;
+  font-size: 13px;
+  border-top: 3px solid #f679bc;
+}
+
+/* ---- Mobile Responsive ---- */
+@media (max-width: 750px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar nav {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .login-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 35px 0;
+  }
+
+  .welcome h1 {
+    font-size: 29px;
+  }
+
+  .login-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .navbar nav a {
+    font-size: 13px;
+  }
+
+  .login-layout {
+    width: 92%;
+  }
+
+  .book-illustration {
+    height: 200px;
+  }
+
+  .welcome-points {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,520 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #030303;
+  color: white;
+}
+
+/* ========== TOP NAVBAR ========== */
+.navbar {
+  width: 100%;
+  min-height: 78px;
+  background: #3b194f;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #f679bc;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: white;
+  border-radius: 5px;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px 4px;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.top-active {
+  color: #f679bc;
+}
+
+/* ========== MAIN LAYOUT ========== */
+main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: stretch;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  background: #3b194f;
+  color: white;
+  padding: 24px 12px;
+  border-right: 1px solid #54296b;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 28px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.logo .icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: #3b194f;
+  border-radius: 8px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 9px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-menu a:hover {
+  background: #54296b;
+  color: #f679bc;
+}
+
+.nav-menu a.active {
+  background: #f679bc;
+  color: #3b194f;
+  font-weight: bold;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 30px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  color: #c56bf9;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: white;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ========== ORDERS LIST + STATUS PANEL LAYOUT ========== */
+.orders-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 20px;
+  width: 100%;
+}
+
+.orders-layout .orders-section {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.orders-layout .status-update {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+}
+
+/* ========== ORDERS TABLE CARD ========== */
+.orders-section {
+  width: 100%;
+  min-width: 0;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #d0e3ff,
+    #eaeaee,
+    #faf2e5
+  );
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(246, 121, 188, 0.12);
+  color: #3b194f;
+}
+
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.orders-header h2 {
+  color: #3b194f;
+  font-size: 23px;
+}
+
+#searchInput {
+  width: 300px;
+  max-width: 100%;
+  padding: 13px;
+  border: 1px solid #d8b5e4;
+  border-radius: 9px;
+  font-size: 15px;
+  background: white;
+  color: #3b194f;
+}
+
+#searchInput:focus {
+  outline: none;
+  border: 2px solid #f679bc;
+  box-shadow: 0 0 0 3px #fce4f1;
+}
+
+/* ========== TABLE ========== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eadcf0;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+th {
+  background: #f8edfc;
+  color: #3b194f;
+  font-weight: bold;
+}
+
+td {
+  color: #030303;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+tbody tr:hover td {
+  background: #fdf5ff;
+}
+
+/* ========== ORDER STATUS BADGES ========== */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 7px;
+  background: #ffd85a;
+  color: #3b194f;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ========== UPDATE STATUS SECTION ========== */
+.status-update {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(120deg, #ffffff, #eee5ff, #fce4f1);
+  border-radius: 14px;
+  border: 1px solid #d8c2ff;
+  color: #3b194f;
+}
+
+.status-card {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #d8c2ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(59, 25, 79, 0.08);
+}
+
+.status-card h2 {
+  color: #3b194f;
+  font-size: 23px;
+  margin-bottom: 22px;
+}
+
+.status-card p {
+  color: #3b194f;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  overflow-wrap: anywhere;
+}
+
+.status-card label {
+  display: block;
+  color: #3b194f;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
+
+.status-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d8c2ff;
+  border-radius: 7px;
+  background: white;
+  color: #3b194f;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.status-card select:focus {
+  outline: none;
+  border-color: #6335a0;
+  box-shadow: 0 0 0 3px #eee5ff;
+}
+
+.status-card select:disabled,
+#updateStatusBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ========== UPDATE BUTTON ========== */
+#updateStatusBtn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(90deg, #6335a0, #8b45c6);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#updateStatusBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #3b194f, #6335a0);
+}
+
+#statusMessage {
+  margin-top: 12px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+
+
+/* ========== FOOTER ========== */
+.admin-footer {
+  width: 100%;
+  background: #3b194f;
+  color: white;
+  text-align: center;
+  padding: 18px 12px;
+  border-top: 3px solid #f679bc;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: auto;
+}
+
+.admin-footer p {
+  margin: 2px 0;
+}
+
+/* ========== TABLET ========== */
+@media (max-width: 1100px) {
+  .main-content {
+    padding: 22px 18px;
+  }
+
+  .sidebar {
+    width: 190px;
+    min-width: 190px;
+  }
+
+  .orders-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.85fr);
+    gap: 15px;
+  }
+
+  .orders-section {
+    padding: 18px;
+  }
+
+  .orders-layout .status-update {
+    padding: 14px;
+  }
+
+  .status-card {
+    padding: 16px;
+  }
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 800px) {
+  .orders-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navbar nav {
+    justify-content: center;
+    gap: 10px 18px;
+  }
+
+  .navbar nav a {
+    font-size: 15px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .logo {
+    padding: 4px 8px 14px;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .nav-menu a {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 20px 12px;
+  }
+
+  .page-header h1 {
+    font-size: 27px;
+  }
+
+  .orders-section {
+    padding: 15px;
+  }
+
+  .orders-header {
+    align-items: stretch;
+  }
+
+  .orders-header h2 {
+    font-size: 20px;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .orders-layout .status-update {
+    padding: 14px;
+  }
+
+  .status-card {
+    padding: 16px;
+  }
+
+  .admin-footer {
+    font-size: 12px;
+    padding: 14px 10px;
+  }
+}
