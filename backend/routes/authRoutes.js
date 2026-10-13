@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
-      role: req.body.role,
+      role: "user",
     });
 
     await user.save();
@@ -44,6 +44,13 @@ router.post("/login", async (req, res) => {
 
     if (!ismatch) {
       return res.status(401).send("Invalid email or password");
+    }
+
+    // Only admin can access admin login
+    if (user.role !== "admin") {
+      return res.status(403).json({
+        message: "Access denied. Admin account required.",
+      });
     }
 
     console.log("JWT secret loaded:", Boolean(process.env.JWT_SECRET));
