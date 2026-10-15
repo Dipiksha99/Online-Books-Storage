@@ -2,40 +2,48 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const mongoose = require("mongoose");
-
-mongoose.connect( process.env.MONGO_URL).then(() => {
-  console.log("Connected to MongoDB");
-}).catch((err) => {
-  console.log("Error connecting to MongoDB", err);
-});
-
-
-const exp = require("express");
+const express = require("express");
 const cors = require("cors");
 
-// ===== book router =====//
+// Routes
 const bookRoutes = require("./routes/bookRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const authRoutes = require("./routes/authRoutes");
 
-const app = exp();
+const app = express();
+
 app.use(cors());
+app.use(express.json());
 
-app.use(exp.json());
+const path = require("path");
+
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../frontend/images"))
+);
+
+
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGO_URL, {
+    dbName: "test",
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+    console.log("Database:", mongoose.connection.name);
+  })
+  .catch((error) => {
+    console.log("MongoDB connection error:", error.message);
+  });
+
+// API routes
 app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
-app.get("/",  (req, res) => {
-  // Get books
-//   const books = await books.find();
-// console.log("Online Book Store API is running");
-res.send("Online Book Store API is running");
-//   res.json(books);
-});
-
-
-//  ===== user ke liye ===== //
-const authRoutes = require ("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Online Book Store API is running");
+});
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

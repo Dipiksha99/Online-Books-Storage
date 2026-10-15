@@ -27,7 +27,11 @@ router.post("/", authMiddleware, async (req, res) => {
     const orderItems = [];
 
     for (const item of items) {
-      if (!item.bookId || !Number.isInteger(item.quantity) || item.quantity < 1) {
+      if (
+        !item.bookId ||
+        !Number.isInteger(item.quantity) ||
+        item.quantity < 1
+      ) {
         return res.status(400).json({
           message: "Invalid book or quantity",
         });
@@ -66,30 +70,104 @@ router.post("/", authMiddleware, async (req, res) => {
       address: address.trim(),
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Order placed successfully",
       order,
     });
   } catch (error) {
-    console.error("Place order error:", error);
-    res.status(500).json({
+    console.error("Place order error:", error.message);
+
+    return res.status(500).json({
       message: "Failed to place order",
     });
   }
 });
 
-// GET: Logged-in user's orders
+
+// GET: All orders for admin dashboard
+router.get("/", authMiddleware, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({
+        message: "Admin access required",
+      });
+    }
+
+    const orders = await Order.find().sort({ createdAt: -1 });
+
+    return res.status(200).json(orders);
+  } catch (error) {
+    console.error("Fetch all orders error:", error.message);
+
+    return res.status(500).json({
+      message: "Failed to fetch orders",
+    });
+  }
+});
+
+
+// PUT: Update order status (admin only)
+router.put("/:id/status", authMiddleware, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({
+        message: "Admin access required",
+      });
+    }
+
+    const allowedStatuses = [
+      "Pending",
+      "Processing",
+      "Shipped",
+      "Delivered",
+    ];
+
+    const { status } = req.body;
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        message: "Invalid order status",
+      });
+    }
+
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true, runValidators: true }
+    );
+
+    if (!order) {
+      return res.status(404).json({
+        message: "Order not found",
+      });
+    }
+
+    return res.json({
+      message: "Order status updated successfully",
+      order,
+    });
+  } catch (error) {
+    console.error("Update status error:", error);
+    return res.status(500).json({
+      message: "Failed to update order status",
+    });
+  }
+});
+
+
+// GET: Logged-in user's own orders
 router.get("/my-orders", authMiddleware, async (req, res) => {
   try {
     const orders = await Order.find({
       userId: req.user.id,
     }).sort({ createdAt: -1 });
 
-    res.status(200).json(orders);
+    return res.status(200).json(orders);
   } catch (error) {
-    console.error("Fetch orders error:", error);
-    res.status(500).json({
-      message: "Failed to fetch orders",
+    console.error("Fetch user orders error:", error.message);
+
+    return res.status(500).json({
+      message: "Failed to fetch your orders",
     });
   }
 });

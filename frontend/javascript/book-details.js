@@ -42,7 +42,7 @@ async function loadBookDetails() {
     imageSection.className = "book-image";
 
     const image = document.createElement("img");
-    image.src = "images/" + (book.image || "");
+    image.src = `http://localhost:5000${book.image}`;
     image.alt = book.title || "Book cover";
     image.onerror = () => image.style.display = "none";
     imageSection.appendChild(image);

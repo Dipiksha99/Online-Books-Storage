@@ -457,3 +457,52 @@ footer {
     padding: 14px 10px;
   }
 }
+
+/* Edit and Delete Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 3px;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.edit-btn:hover {
+  background: #5b21b6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Button Click Effect */
+.edit-btn:active,
+.delete-btn:active {
+  transform: scale(0.96);
+}
+
+/* Actions Column */
+td .edit-btn,
+td .delete-btn {
+  white-space: nowrap;
+}

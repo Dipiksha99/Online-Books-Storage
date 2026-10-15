@@ -1,169 +1,130 @@
-const exp = require("express");
-
-const router = exp.Router();
+const express = require("express");
+const router = express.Router();
 
 const User = require("../models/User");
-
 const bcrypt = require("bcryptjs");
-
 const jwt = require("jsonwebtoken");
 
+// ================= REGISTER USER =================
 router.post("/register", async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const { name, password } = req.body;
+    const email = req.body.email?.trim().toLowerCase();
+
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "Name, email and password are required.",
+      });
+    }
+
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.status(409).json({
+        message: "Email is already registered.",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = new User({
-      name: req.body.name,
-      email: req.body.email,
+      name,
+      email,
       password: hashedPassword,
       role: "user",
     });
 
     await user.save();
 
-    res.send("User added successfully");
+    return res.status(201).json({
+      message: "User registered successfully.",
+    });
   } catch (error) {
-    console.log(error);
+    // console.error("Registration error:", error.message);
 
-    res.status(500).send("Error adding User");
+    return res.status(500).json({
+      message: "Unable to register user.",
+    });
   }
 });
 
+// ================= LOGIN =================
 router.post("/login", async (req, res) => {
   try {
     const email = req.body.email?.trim().toLowerCase();
+    const password = req.body.password;
 
-    const user = await User.findOne({ email });
-    console.log("User found:", user);
-
-    if (!user) {
-      return res.status(401).send("Invalid email or password");
-    }
-
-    const ismatch = await bcrypt.compare(req.body.password, user.password);
-    console.log("Password matched:", ismatch);
-
-    if (!ismatch) {
-      return res.status(401).send("Invalid email or password");
-    }
-
-    // Only admin can access admin login
-    if (user.role !== "admin") {
-      return res.status(403).json({
-        message: "Access denied. Admin account required.",
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required.",
       });
     }
 
-    console.log("JWT secret loaded:", Boolean(process.env.JWT_SECRET));
+    const user = await User.findOne({ email });
+
+    // Do not log passwords or password hashes.
+    // console.log("Login email:", email);
+    // console.log("Database:", User.db.name);
+    // console.log("User found:", Boolean(user));
+
+    // console.log(
+    //   "Emails in collection:",
+    //   await User.find({}, { email: 1, _id: 0 }).lean(),
+    // );
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid email or password.",
+      });
+    }
+
+    const passwordMatched = await bcrypt.compare(password, user.password);
+
+    // console.log("Password matched:", passwordMatched);
+
+    if (!passwordMatched) {
+      return res.status(401).json({
+        message: "Invalid email or password.",
+      });
+    }
+
+    // Only admins can access the admin login.
+    // if (user.role !== "admin") {
+    //   return res.status(403).json({
+    //     message: "Access denied. Admin account required.",
+    //   });
+    // }
+
+    if (!process.env.JWT_SECRET) {
+      // console.error("JWT_SECRET is missing from environment.");
+      return res.status(500).json({
+        message: "Server authentication configuration error.",
+      });
+    }
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      {
+        id: user._id,
+        role: user.role,
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" },
+      {
+        expiresIn: "1h",
+      },
     );
 
-    res.json({
-      message: "Login successful",
-      token: token,
+    return res.status(200).json({
+      message: "Login successful.",
+      token,
+      role: user.role,
     });
   } catch (error) {
-    console.log(error);
+    // console.error("Login error:", error.message);
 
-    res.status(500).send("Error adding User");
+    return res.status(500).json({
+      message: "Login failed due to a server error.",
+    });
   }
 });
 
 module.exports = router;
-
-// router.put("/:_id", async (req, res) => {
-
-//     try {
-
-//         const user = await User.findByIdAndUpdate(
-//             req.params._id,
-//             req.body,
-//             { new: true }
-//         );
-
-//         console.log(user);
-
-//         res.json(user);
-
-//     } catch (error) {
-
-//         console.log(error);
-
-//         res.status(400).send(error.message);
-
-//     }
-
-// });
-
-// router.get("/", async (req, res) => {
-
-//     try {
-
-//         const users = await User.find();
-
-//         console.log(users);
-
-//         res.json(users);
-
-//     } catch (error) {
-
-//         console.log(error);
-
-//         res.status(500).send("Error fetching users");
-
-//     }
-
-// });
-
-// router.get("/:_id", async (req, res) => {
-
-//     try {
-
-//         const user = await User.findById(req.params._id);
-
-//         console.log(user);
-
-//         if (!user) {
-//             return res.status(404).send("User not found");
-//         }
-
-//         res.json(user);
-
-//     } catch (error) {
-
-//         console.log(error);
-
-//         res.status(400).send("Incorrect book ID");
-
-//     }
-
-// });
-
-// router.delete("/:_id", async (req, res) => {
-
-//     try {
-
-//         const user = await User.findByIdAndDelete(req.params._id);
-
-//         console.log(user);
-
-//         if (!user) {
-//             return res.status(404).send("User not found");
-//         }
-
-//         res.json(user);
-
-//     } catch (error) {
-
-//         console.log(error);
-
-//         res.status(400).send("Incorrect user ID");
-
-//     }
-
-// });
-
-// module.exports = router;

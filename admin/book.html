@@ -73,6 +73,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Price</th>
@@ -116,6 +117,7 @@
             name="price"
             type="number"
             placeholder="Enter price"
+            required min="0"
           />
         </div>
         <div>
@@ -125,6 +127,7 @@
             name="stock"
             type="number"
             placeholder="Enter stock quantity"
+            required min="0" step="1"
           />
         </div>
         <div>
@@ -137,7 +140,7 @@
             required
           />
         </div>
-        <button class="save">Save</button>
+        <button class="save" type="submit">Save</button>
       </form>
     </main>
 

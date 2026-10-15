@@ -53,6 +53,26 @@ router.put("/:_id", authMiddleware, async (req, res) => {
 
 });
 
+router.get("/", async (req, res) => {
+
+    try {
+
+        const books = await Book.find();
+
+        console.log(books);
+
+        res.json(books);
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).send("Error fetching books");
+
+    }
+
+});
+
 
 router.get("/", authMiddleware, async (req, res) => {
 

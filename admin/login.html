@@ -1,79 +1,83 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookStore Admin Login</title>
-    <link rel="stylesheet" href="css/login_admin.css">
-</head>
-<body>
-
-<header class="navbar">
-    <a href="../frontend/index.html" class="brand">
-        <img src="../frontend/images/logo2.png" alt="BookStore Logo">
+    <link rel="stylesheet" href="css/login_admin.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../frontend/index.html" class="brand">
+        <img src="../frontend/images/logo2.png" alt="BookStore Logo" />
         <span>BookStore Admin Panel</span>
-    </a>
+      </a>
 
-    <nav>
+      <nav>
         <a href="dashboard.html">Dashboard</a>
         <a href="book.html">Books</a>
         <a href="order.html">Orders</a>
         <a href="login.html">Login</a>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<main class="login-layout">
-
-    <section class="welcome">
+    <main class="login-layout">
+      <section class="welcome">
         <div class="book-illustration">
-            <div class="plant">🌿</div>
-            <div class="books">
-                <div class="book book-one">BOOKS</div>
-                <div class="book book-two">READ</div>
-                <div class="book book-three">GROW</div>
-            </div>
-            <div class="shield">🔒</div>
+          <div class="plant">🌿</div>
+          <div class="books">
+            <div class="book book-one">BOOKS</div>
+            <div class="book book-two">READ</div>
+            <div class="book book-three">GROW</div>
+          </div>
+          <div class="shield">🔒</div>
         </div>
 
         <h1>Welcome Back!</h1>
         <p>Manage your bookstore with ease.</p>
 
         <div class="welcome-points">
-            <p>✓ Manage Books</p>
-            <p>✓ Track Orders</p>
-            <p>✓ Grow Your Store</p>
+          <p>✓ Manage Books</p>
+          <p>✓ Track Orders</p>
+          <p>✓ Grow Your Store</p>
         </div>
-    </section>
+      </section>
 
-    <section class="login-card">
+      <section class="login-card">
         <div class="login-icon">🔐</div>
         <h2>Admin Login</h2>
         <p class="subtitle">Sign in to access your dashboard</p>
 
         <form id="loginForm">
-            <label for="email">Email Address</label>
-            <input type="email" id="email"
-                   placeholder="Enter your email" required>
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
 
-            <label for="password">Password</label>
-            <input type="password" id="password"
-                   placeholder="Enter your password" required>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
 
-            <button type="submit">Login to Dashboard</button>
-            <p id="message" role="status"></p>
+          <button type="submit">Login to Dashboard</button>
+          <p id="message" role="status"></p>
         </form>
 
         <p class="secure-note">🔒 Only for authorized admins</p>
-    </section>
+      </section>
+    </main>
 
-</main>
+    <footer>
+      <p>BookStore Admin Panel</p>
+      <p>Manage your store. Inspire more readers.</p>
+    </footer>
 
-<footer>
-    <p>BookStore Admin Panel</p>
-    <p>Manage your store. Inspire more readers.</p>
-</footer>
-
-<script src="js/admin-login.js"></script>
-</body>
+    <script src="js/admin-login.js"></script>
+  </body>
 </html>

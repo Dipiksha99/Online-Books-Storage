@@ -202,4 +202,95 @@ h2 {
 .btn:hover {
   color: #0b0e17;
   background-color: #f679bc;
-} */
+} */  
+ 
+/* ------ Additional Details ------ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero section text spacing */
+.hero-content h1 {
+  line-height: 1.3;
+  font-weight: bold;
+}
+
+.hero-content .subhead {
+  line-height: 1.5;
+}
+
+.hero-content .description {
+  line-height: 1.7;
+}
+
+/* CTA button animation */
+.btn-cta {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+}
+
+/* Featured book card animation */
+.book {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(246, 121, 188, 0.2);
+}
+
+/* Book image hover effect */
+.book img {
+  transition: transform 0.3s ease;
+}
+
+.book:hover img {
+  transform: scale(1.04);
+}
+
+/* Responsive hero section */
+@media (max-width: 768px) {
+  .hero {
+    height: 65vh;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content .subhead {
+    font-size: 22px;
+  }
+
+  .hero-content .description {
+    font-size: 16px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 26px;
+  }
+
+  .hero-content .subhead {
+    font-size: 18px;
+  }
+
+  .btn-cta {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
+}
